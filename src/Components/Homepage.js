@@ -37,7 +37,7 @@ const ImageSection = () => {
             bgSize="cover"
             bgPosition="center"
             bgRepeat="no-repeat"
-            minHeight="60vh" // Adjusted to 100vh for full screen
+            minHeight="60vh"
             width="100vw"
             position="relative"
         >
@@ -56,23 +56,23 @@ const ImageSection = () => {
                 zIndex="1"
                 py={20}
                 maxWidth="50%"
-                textAlign="left" // Align text to the right
+                textAlign="left"
                 color="white"
                 ps={10} // Optional: Add some padding to the right
             >
-                <Text fontSize="5xl" fontWeight="bold"> {/* Increased font size */}
+                <Text fontSize="6vw" fontWeight="bold"> {/* Adjusted font size */}
                     <Text as="span" color="white">
                         Welcome to
                     </Text>{" "}
                     <p>
                         <Text as="span" color="white">
-                        <Text as="span" color="white" px={4} py={2} fontSize={`5xl`}>
-                           Card Validator
+                            <Text as="span" color="white" px={4} py={2} fontSize={`6vw`}>
+                                Card Validator
+                            </Text>
                         </Text>
-                    </Text>
                     </p>
                 </Text>
-                <Text mt={10} fontSize="xl" color="white" py={20}> {/* Increased font size */}
+                <Text mt={10} fontSize="4vw" color="white" py={20}> {/* Adjusted font size */}
                     Your <Text as="span" fontWeight="bold">No. 1</Text> stop for any gift card purchase and validation - swift response, top-notch security and trusted by over <Text as="span" fontWeight="bold">5,000</Text> users daily. What will you like to do?
                 </Text>
             </Box>
@@ -88,7 +88,7 @@ const WhyChooseUsSection = () => {
             width="100%"
             mx="auto"
             py={20}
-            px={40}
+            px={4}
             position="relative"
             display="flex"
             justifyContent="center"
@@ -528,7 +528,7 @@ function PurchaseOrValidate() {
             width="100%"
             mx="auto"
             py={20}
-            px={40}
+            px={4}
             position="relative"
             display="flex"
             justifyContent="center"
@@ -812,7 +812,7 @@ const CustomerFeedback = () => {
     ];
 
     return (
-        <Box minHeight="30vh" width="100%" mx="auto" py={20} px={40} textAlign="center" background={`black`} color={`white`}>
+        <Box minHeight="30vh" width="100%" mx="auto" py={20} px={4} textAlign="center" background={`black`} color={`white`}>
             <Text fontSize="2xl" fontWeight="bold" mb={4}>Customer Feedback</Text>
             <Text fontSize="sm" mb={10}>What our customers are saying</Text>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
@@ -833,7 +833,7 @@ const CustomerFeedback = () => {
 };
 
 const FAQSection = forwardRef((props, ref) => (
-    <Box ref={ref} width="100%" mx="auto" py={20} px={40} background={`gray.700`} color={`white`}>
+    <Box ref={ref} width="100%" mx="auto" py={20} px={4} background={`gray.700`} color={`white`}>
         <Text fontSize="2xl" fontWeight="bold" mb={20} textAlign="center">Frequently Asked Questions</Text>
             <Accordion allowToggle>
                 <AccordionItem>
