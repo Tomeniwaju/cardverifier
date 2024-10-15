@@ -51,28 +51,28 @@ const ImageSection = () => {
                 height="100%"
                 zIndex="0"
             />
-            <Box
+           <Box
                 position="relative"
                 zIndex="1"
                 py={20}
-                maxWidth="50%"
+                maxWidth={{ base: '90%', md: '70%', lg: '50%' }} // Responsive maxWidth
                 textAlign="left"
                 color="white"
                 ps={10} // Optional: Add some padding to the right
             >
-                <Text fontSize="6vw" fontWeight="bold"> {/* Adjusted font size */}
+                <Text fontSize={{ base: '30px', md: '35px', lg: '40px' }} fontWeight="bold"> {/* Adjusted font size */}
                     <Text as="span" color="white">
                         Welcome to
                     </Text>{" "}
                     <p>
                         <Text as="span" color="white">
-                            <Text as="span" color="white" px={4} py={2} fontSize={`6vw`}>
+                            <Text as="span" color="white" px={4} py={2} fontSize={{ base: '30px', md: '35px', lg: '40px' }}>
                                 Card Validator
                             </Text>
                         </Text>
                     </p>
                 </Text>
-                <Text mt={10} fontSize="4vw" color="white" py={20}> {/* Adjusted font size */}
+                <Text mt={10} fontSize={{ base: '15px', md: '18px', lg: '20px' }} color="white" py={20}> {/* Adjusted font size */}
                     Your <Text as="span" fontWeight="bold">No. 1</Text> stop for any gift card purchase and validation - swift response, top-notch security and trusted by over <Text as="span" fontWeight="bold">5,000</Text> users daily. What will you like to do?
                 </Text>
             </Box>
