@@ -169,12 +169,12 @@ function RadioCard(props) {
 function PurchaseOrValidate() {
     const data = [
         { logo: "./visavanila.jpeg.webp", name: "VISA Vanilla E - Card" },
+        { logo: "./itunes.png", name: "Apple E - Card" },
         { logo: "./Spotify.png", name: "US Spotify E - Card" },
         { logo: "./Googleplay.png", name: "Google Play E - Card" },
         { logo: "./razer.png", name: "RazerGold E - Card" },
         { logo: "./playstation.png", name: "US PSN E - Card" },
         { logo: "./Hulu.png", name: "US Hulu E - Card" },
-        { logo: "./itunes.png", name: "Apple E - Card" },
         { logo: "./american.jpeg", name: "American Express E - Card" },
         { logo: "./sephora.png", name: "Sephora E - Card" },
         { logo: "./nordstorm.png", name: "Nordstrom E - Card" },
