@@ -67,7 +67,7 @@ const ImageSection = () => {
                     <p>
                         <Text as="span" color="white">
                             <Text as="span" color="white" px={4} py={2} fontSize={{ base: '30px', md: '35px', lg: '40px' }}>
-                                Card Validator
+                                All Gift Card Validator
                             </Text>
                         </Text>
                     </p>

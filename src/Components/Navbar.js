@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className={`nav ${isScrolled ? 'shrink' : ''}`}>
       <div className="nav-container">
-        <div className="site-title">Card Validator</div>
+        <div className="site-title">All Gift Card Validator</div>
       </div>
     </nav>
   );
