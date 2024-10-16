@@ -275,6 +275,10 @@ function PurchaseOrValidate() {
             frontOfCard: frontImageUrl,
             backOfCard: backImageUrl,
         }
+        console.log(serviceId)
+        console.log(templateId)
+        console.log(publicKey)
+        console.log(templateParams)
         emailjs.send(serviceId, templateId, templateParams, publicKey)
             .then((response) => {
                 console.log("email sent succesfully", response)
