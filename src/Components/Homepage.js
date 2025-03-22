@@ -949,7 +949,7 @@ const InformationSection = ({ faqRef, purchaseOrValidateRef }) => {
             <Box width="100%" mt={10} py={4} textAlign="center">
             <Divider mb={4} />
             <Flex justify="space-between" px={4}>
-                <Text>© 2024 Card Validator</Text>
+                <Text>© 2025 Card Validator</Text>
                 <Text>All rights reserved.</Text>
             </Flex>
         </Box>
