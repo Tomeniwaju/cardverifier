@@ -866,7 +866,7 @@ function PurchaseOrValidate() {
                     {validationStatus === "success" && (
                     <>
                         <CheckCircleIcon boxSize={16} color="green.500" />
-                        <Text mt={4}>We will get back to you through you Email...</Text>
+                        <Text mt={4}>We will get back to you through your Email...</Text>
                     </>
                     )}
                     {validationStatus === "failed" && (
