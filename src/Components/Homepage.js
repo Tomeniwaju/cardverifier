@@ -875,9 +875,11 @@ function PurchaseOrValidate() {
                         <Text mt={4}>Validation Failed. Please try again.</Text>
                     </>
                     )}
-                    <Button variant='solid' mt={4} onClick={() => { setValidationStatus(null); onValidateOpen(); }}>
-                        Check Another Card
-                    </Button>
+                    {validationStatus === "success" || validationStatus === "failed" && (
+                        <Button variant='solid' mt={4} onClick={() => { setValidationStatus(null); onValidateOpen(); }}>
+                            Check Another Card
+                        </Button>
+                    )}
                 </ModalBody>
                 </ModalContent>
             </Modal>
