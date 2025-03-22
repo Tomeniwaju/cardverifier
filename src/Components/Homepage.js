@@ -38,12 +38,12 @@ const ImageSection = () => {
             bgPosition="center"
             bgRepeat="no-repeat"
             minHeight="60vh"
-            width="100vw"
+            width="100%"
             position="relative"
         >
             <Box
                 bg="black"
-                opacity="0.4"
+                opacity="0.6"
                 position="absolute"
                 top="0"
                 left="0"
@@ -925,7 +925,41 @@ const InformationSection = ({ faqRef, purchaseOrValidateRef }) => {
         <Box minHeight="30vh" width="100%" px={20} mx="auto" pt={20} bg={`black`} color={`white`}>
             <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
                 <Box gridColumn={{ base: "span 1", md: "span 2" }}>
-                    <Text fontSize="sm" mb={4}>
+                    <VStack mb={3} spacing={1} align="stretch">
+                    <Text fontSize="lg" fontWeight="bold">Location</Text>
+                    <Text fontWeight="light">19, Dutch Street,</Text>
+                    <Text>New York, NY 10038,</Text>
+                    <Text>United States.</Text>
+                </VStack>
+                <VStack mb={3} spacing={1} align="stretch">
+                    <Text fontSize="lg" fontWeight="bold">Contacts</Text>
+                    <HStack>
+                        <Text>Ph.</Text>
+                        <Text>+1-234-222-0970</Text>
+                    </HStack>
+                    <HStack>
+                        <Text>Mail.</Text>
+                        <Text>assistance.allgiftcardvalidator@gmail.com</Text>
+                    </HStack>
+                </VStack>
+                </Box>
+                    <VStack spacing={4} align="stretch">
+                        <Text fontSize="lg" fontWeight="bold">Explore</Text>
+                        <Text cursor="pointer" _hover={{ color: "blue.500" }}>About</Text>
+                        <Text cursor="pointer" _hover={{ color: "blue.500" }}>Contact</Text>
+                        <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToFAQ}>FAQ's</Text>
+                        <Text cursor="pointer" _hover={{ color: "blue.500" }}>Privacy Policy</Text>
+                    </VStack>
+                <VStack spacing={4} align="stretch">
+                    <Text fontSize="lg" fontWeight="bold">Actions</Text>
+                    <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToPurchaseOrValidate}>Buy Card</Text>
+                    <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToPurchaseOrValidate}>Validate Card</Text>
+                </VStack>
+            </SimpleGrid>
+
+            <Box width="100%" mt={2} py={4}>
+            <Box width="50vw" mb={4}>
+                    <Text fontSize="sm" mb={4} mt={4}>
                         Purchase digital cards with instant email delivery. We email all kinds of cards internationally. We accept PayPal and credit cards mode of payment. We are available 24/7.
                     </Text>
                     <VStack align="start" spacing={4}>
@@ -933,22 +967,8 @@ const InformationSection = ({ faqRef, purchaseOrValidateRef }) => {
                         <Button variant='solid'>Submit</Button>
                     </VStack>
                 </Box>
-                <VStack spacing={4} align="stretch">
-                    <Text fontSize="lg" fontWeight="bold">Explore</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }}>About</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }}>Contact</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToFAQ}>FAQ's</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }}>Privacy Policy</Text>
-                </VStack>
-                <VStack spacing={4} align="stretch">
-                    <Text fontSize="lg" fontWeight="bold">Actions</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToPurchaseOrValidate}>Buy Card</Text>
-                    <Text cursor="pointer" _hover={{ color: "blue.500" }} onClick={scrollToPurchaseOrValidate}>Validate Card</Text>
-                </VStack>
-            </SimpleGrid>
-            <Box width="100%" mt={10} py={4} textAlign="center">
-            <Divider mb={4} />
-            <Flex justify="space-between" px={4}>
+            <Divider mb={4} mt={10} />
+            <Flex justify="space-between" px={4} textAlign="center">
                 <Text>© 2025 Card Validator</Text>
                 <Text>All rights reserved.</Text>
             </Flex>
