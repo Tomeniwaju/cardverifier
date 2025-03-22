@@ -25,10 +25,10 @@ function App() {
 
 export default App;
 
-function HeaderTab() {
-  return (
-    <div className="header-tab">
-      Fast. Secured. Reliable.
-    </div>
-  );
-}
+// function HeaderTab() {
+//   return (
+//     <div className="header-tab">
+//       Fast. Secured. Reliable.
+//     </div>
+  // );
+// }
