@@ -760,7 +760,7 @@ function PurchaseOrValidate() {
                                     <VStack mb={4} spacing={1} align="stretch" color="red" fontSize="14px">
                                             <Text fontWeight="light">Scratch film of the card to reveal pin before upload where applicable.*</Text>
                                             <Text fontWeight="light">Please provide your valid email*</Text>
-                                            <Text fontWeight="light">Provide the Currency, Amount, Card Number and other values and you can proceed to upload the front and back of the card</Text>
+                                            {/* <Text fontWeight="light">Provide the Currency, Amount, Card Number and other values and you can proceed to upload the front and back of the card</Text> */}
                                     </VStack>
                                     <FormControl>
                                         <FormLabel>Card name</FormLabel>
@@ -1016,7 +1016,7 @@ const InformationSection = ({ faqRef, purchaseOrValidateRef }) => {
                     </HStack>
                     <HStack>
                         <Text>Mail.</Text>
-                        <Text>assistance.allgiftcardvalidator@gmail.com</Text>
+                        <Text>help.allgiftcardvalidator@gmail.com</Text>
                     </HStack>
                 </VStack>
                 </Box>
