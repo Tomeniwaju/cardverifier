@@ -473,20 +473,20 @@ function PurchaseOrValidate() {
     //     useWebWorker: true // Optional: for better performance
     // };
 
-    try {
-        // const originalSize = file.size;
-        const compressedFile = await imageCompression(file, options);
-        // const compressedSize = compressedFile.size;
+    // try {
+    //     const originalSize = file.size;
+    //     const compressedFile = await imageCompression(file, options);
+    //     const compressedSize = compressedFile.size;
 
-        // Log the original and compressed file sizes
-        // console.log(`File successfully compressed from ${originalSize / 1024} KB to ${compressedSize / 1024} KB`);
+    //     // Log the original and compressed file sizes
+    //     console.log(`File successfully compressed from ${originalSize / 1024} KB to ${compressedSize / 1024} KB`);
 
-        return compressedFile;
-    } catch (error) {
-        // console.log('Error compressing the file:', error);
-        return file; // Return the original file if compression fails
-    }
-    };
+    //     return compressedFile;
+    // } catch (error) {
+    //     // console.log('Error compressing the file:', error);
+    //     return file; // Return the original file if compression fails
+    // }
+    // };
     
     // Function to upload image to Cloudinary
     const uploadToCloudinary = async (file) => {
