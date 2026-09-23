@@ -1,4 +1,6 @@
-import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider, CardFooter, ButtonGroup, VStack, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Input, Modal, ModalContent, ModalOverlay, ModalBody, ModalHeader, ModalCloseButton, FormControl, FormLabel, ModalFooter, useDisclosure, Select, useRadioGroup, useNumberInput, HStack, Switch, useRadio, Spinner } from "@chakra-ui/react"
+import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider, CardFooter, ButtonGroup, VStack, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Input, Modal, ModalContent, ModalOverlay, ModalBody, ModalHeader, ModalCloseButton, FormControl, FormLabel, ModalFooter, useDisclosure, Select, useRadioGroup, 
+        // useNumberInput, 
+        HStack, Switch, useRadio, Spinner } from "@chakra-ui/react"
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { useRef, forwardRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
@@ -389,12 +391,12 @@ function PurchaseOrValidate() {
 
     const group = getRootProps();
 
-    const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
-        step: 1,
-        defaultValue: 1,
-        min: 1,
-        max: 99
-    });
+    // const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
+    //     step: 1,
+    //     defaultValue: 1,
+    //     min: 1,
+    //     max: 99
+    // });
 
     // const inc = getIncrementButtonProps();
     // const dec = getDecrementButtonProps();
