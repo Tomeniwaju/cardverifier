@@ -2,7 +2,7 @@ import { Text, Box, Flex, Button, Image, Card, CardBody, Stack, Heading, Divider
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { useRef, forwardRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import imageCompression from 'browser-image-compression';
+// import imageCompression from 'browser-image-compression';
 import axios from 'axios';
 
 // const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME
@@ -755,7 +755,8 @@ function PurchaseOrValidate() {
                                             colorScheme="white"
                                             variant="outline"
                                             type="submit"
-                                            isDisabled={!isFileValid || loading || !frontImage || !backImage} 
+                                            // isDisabled={!isFileValid || loading || !frontImage || !backImage}
+                                            isDisabled={loading || !frontImage || !backImage}
                                         >
                                             {loading ? <Spinner size="sm" /> : 'Validate'}
                                         </Button>
